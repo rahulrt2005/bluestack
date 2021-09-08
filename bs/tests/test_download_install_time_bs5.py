@@ -26,5 +26,4 @@ def test_download_install_and_time_bs5():
     # Installing BS 5
     steps_bs5.install_bs5(downloader_details["path"])
 
-    # Removing installer from system
 
