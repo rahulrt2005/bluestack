@@ -1,6 +1,8 @@
 import requests
 import subprocess
 import time
+import os
+from pathlib import Path
 
 
 def timeit(method):
@@ -21,8 +23,8 @@ def download_bs5():
     bs5_download_url = "https://cdn3.bluestacks.com/downloads/windows/nxt/5.2.110.1003" \
                        "/4b37f8a27d79ab796aef0455dcca9eb4/x64/BlueStacksFullInstaller_5.2.110.1003_amd64_native.exe"
 
-    file_path = "D:\\HackerRank\\bs5_installer.exe"
-    file_name = file_path.split("\\")[-1]
+    file_name = "bs5_offline_installer.exe"
+    file_path = Path(os.getcwd())/file_name
     r = requests.get(bs5_download_url, stream=True)
     print("Downloading Bluestacks 5 offline installer !!!!! ")
     with open(file_path, 'wb') as f:
@@ -46,3 +48,5 @@ def install_bs5(file_path):
         print(f"BlueStacks 5 installation complete")
     except:
         print(f"Error occurred while installing")
+    finally:
+        Path.unlink(file_path)
